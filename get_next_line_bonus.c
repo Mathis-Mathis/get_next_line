@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmousli <mmousli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 12:57:17 by mmousli           #+#    #+#             */
-/*   Updated: 2025/11/30 14:55:34 by mmousli          ###   ########.fr       */
+/*   Updated: 2026/01/05 13:45:13 by mmousli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,17 +111,29 @@ char	*get_next_line(int fd)
 #include <stdio.h>
 int	main(void)
 {
-	int		fd;
+	int		fd1;
+	int		fd2;
 	char	*line;
 
-	fd = open("test", O_RDONLY);
-	if(fd == -1)
+	fd1 = open("file1.txt", O_RDONLY);
+	fd2 = open("file2.txt", O_RDONLY);
+
+	if (fd1 < 0 || fd2 < 0)
 		return (1);
-	while((line = get_next_line(fd)) != NULL)
-	{
-		printf("%s", line);
-		free(line);
-	}
-	close(fd);
-	return (0);
+
+	line = get_next_line(fd1);
+	printf("fd1 : %s", line);
+	free(line);
+
+	line = get_next_line(fd2);
+	printf("fd2 : %s", line);
+	free(line);
+
+	line = get_next_line(fd1);
+	printf("fd1 : %s", line);
+	free(line);
+
+	line = get_next_line(fd2);
+	printf("fd2 : %s", line);
+	free(line);
 }*/
